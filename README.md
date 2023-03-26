@@ -1,9 +1,7 @@
 <h1 align="center">React Notes app with firebase authentication and storage</h1>
  
  <p align="center"><br/>
- <p>DEMO</p>
-     <a href="https://notesbyfirebase.netlify.app/">
-  </a>
+  <a href="https://notesbyfirebase.netlify.app/">DEMO</a>
  </p>
 
 
