@@ -1,4 +1,5 @@
 import { Fragment,useState } from "react"
+import { auth } from "../config/firebase";
 import "./Card.css";
 
 const Newentry = (props) => {
@@ -15,7 +16,7 @@ const Newentry = (props) => {
     }
 
     const SaveHandler = () => {
-        const items ={Title:EnteredTitle,Description:EnteredDescription}
+        const items ={Title:EnteredTitle,Description:EnteredDescription,UserId:auth?.currentUser?.uid}
         if(EnteredTitle!=="" && EnteredDescription!==""){
             props.onSaveItem(items);
             setTitle('');
@@ -25,20 +26,18 @@ const Newentry = (props) => {
 
     return (
         <Fragment>
-            <section className="form-wrapper">
-                <div className="form-container">
-                    <div><h3>Add New</h3></div>
-                    <div className="form-control input">
-                        <input type="text" value={EnteredTitle} onChange={TitleChangeHandler}></input>
-                        <label>Title</label>
+                <div className="card">
+                    <h3>Add New</h3>
+                    <div ><strong>Title</strong>
+                        <input type="text" value={EnteredTitle} onChange={TitleChangeHandler}className="form-control"></input>
+                        
                     </div>
-                    <div className="form-control input">
-                        <input type="text" value={EnteredDescription} onChange={DescriptionChangeHandler}></input>
-                        <label>Description</label>
+                    <div > <strong>Description</strong>
+                        <input type="text" value={EnteredDescription} onChange={DescriptionChangeHandler}className="form-control"></input>
+                       
                     </div>
                     <button className="btn" onClick={SaveHandler}>save</button>
                 </div>
-            </section>
         </Fragment>
     )
 }
